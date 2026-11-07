@@ -1,3 +1,30 @@
+# Deploying a Scalable ML Pipeline with FastAPI
+
+**GitHub repository:** https://github.com/iamsangitsharma/Deploying-a-Scalable-ML-Pipeline-with-FastAPI
+
+A Random Forest model that predicts whether a person earns more than $50K a year from Census data, served with a FastAPI REST API and tested with GitHub Actions (pytest + flake8).
+
+## How to run
+```bash
+pip install -r requirements.txt
+python train_model.py          # trains the model, saves model/ and slice_output.txt
+pytest test_ml.py -v           # runs the unit tests
+uvicorn main:app --reload      # starts the API
+python local_api.py            # in a second terminal: sends a GET and a POST
+```
+
+## Project files
+* `ml/model.py` - train, inference, save/load and slice-performance functions
+* `train_model.py` - the ML pipeline
+* `test_ml.py` - unit tests
+* `main.py` - FastAPI app (GET `/` and POST `/data/`)
+* `local_api.py` - sends requests to the running API
+* `model_card.md` - model card
+* `slice_output.txt` - model performance on data slices
+* `screenshots/` - `continuous_integration.png`, `unit_test.png`, `local_api.png`
+
+---
+
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
 
 # Environment Set up (pip or conda)
